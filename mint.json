@@ -2,89 +2,135 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "LightLink Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
+    "dark": "/logo/dark.avif",
     "light": "/logo/light.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#5FA9FF",
+    "light": "#5FA9FF",
+    "dark": "#5FA9FF",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#5FA9FF",
+      "to": "#5FA9FF"
     }
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Discord",
+      "url": "https://linkedin.com"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://linkedin.com"
+    },
+    {
+      "name": "Telegram",
+      "url": "https://linkedin.com"
+    },
+    {
+      "name": "Website",
+      "url": "https://linkedin.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "BlockExplorer",
+    "url": "https://github.com.com/lightlink-network"
+  },
+  "primaryTab": {
+    "name": "Home"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "User Docs",
+      "url": "user"
+    },
+    {
+      "name": "Developer Docs",
+      "url": "developer"
+    },
+    {
+      "name": "Enterprise Docs",
+      "url": "enterprise"
+    },
+    {
+      "name": "Technical Deep Dive",
+      "url": "technical-deep-dive"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "Live Networks",
+      "icon": "circle-nodes",
+      "url": "https://lightlink.mintlify.app/live-networks/pegasus"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Live Contracts",
+      "icon": "file-contract",
+      "url": "https://lightlink.mintlify.app/live-contracts/pegasus"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "JSON-RPC API",
+      "icon": "plug",
+      "url": "https://lightlink.mintlify.app/json-rpc/introduction"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Introduction",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "mission",
+        "tech-stack",
+        "getting-started"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "User Docs",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "user/code",
+        "user/images",
+        "user/markdown",
+        "user/navigation",
+        "user/reusable-snippets",
+        "user/settings"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Developer Docs",
       "pages": [
-        "api-reference/introduction"
+        "developer/code",
+        "developer/images",
+        "developer/markdown",
+        "developer/navigation",
+        "developer/reusable-snippets",
+        "developer/settings"
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Enterprise Docs",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "enterprise/code",
+        "enterprise/images",
+        "enterprise/markdown",
+        "enterprise/navigation",
+        "enterprise/reusable-snippets",
+        "enterprise/settings"
+      ]
+    },
+    {
+      "group": "Technical Deep Dive",
+      "pages": [
+        "technical-deep-dive/protocol-overview",
+        "technical-deep-dive/data-availability",
+        "technical-deep-dive/sequencer-node"
       ]
     }
   ],
   "footerSocials": {
+    "discord": "https://twitter.com/mintsearch",
     "x": "https://x.com/mintlify",
+    "telegram": "https://twitter.com/mintsearch",
     "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
   }

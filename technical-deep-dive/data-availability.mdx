@@ -1,0 +1,15 @@
+---
+title: "Data Availability"
+---
+
+Data availability (DA) refers to a user's confidence that the data required to verify a block is available to all network participants.
+
+For LightLink replicator nodes, this is relatively simple, as replicator nodes download every new block from layer two and independently verify every transaction and block by re-executing them. However, hummingbird validator nodes validate block data directly from layer one Ethereum. This means that even if the L2 network was offline, users could still withdraw their funds from LightLink by submitting their withdrawal transactions directly to the L1 smart contract. Validator nodes can then validate the withdrawal based on the state of the available historical data. Users can exit the network once a single validator is in operation and the historic chain data is available.
+
+Since anyone can easily run a validator, the main concern is ensuring the data is always available and ready to be downloaded whenever required. Early layer two scaling solutions achieved data availability by compressing and storing the transaction data on their layer one network, such as Ethereum. This is the obvious solution. However, it has some drawbacks:
+
+Cost: It is very expensive to store data on Ethereum. This cost is usually borne by the end user of the layer two protocol and increases the overall transaction fee.
+
+Congestion: Submitting batches of transactions directly to Ethereum can result in unnecessary network congestion, resulting in higher fees.
+
+LightLink is one of the first layer two blockchains to leverage Celestia's novel data availability protocol. Celestia is a modular data availability network enabling consensus around whether a piece of data is available. Celestia Blobstream is the first data availability solution for Ethereum that securely scales with the number of users. Blobstream relays commitments to Celestia's data root to an on-chain light client on Ethereum for integration by developers into L2 contracts. This enables Ethereum developers to build high-throughput L2s using Celestia's optimised DA layer, the first with Data Availability Sampling (DAS). LightLink was designed to work with Celestia from the ground up, enabling cost-effective data availability and therefore, cheaper fees for LightLink users.
