@@ -18,24 +18,24 @@
   "topbarLinks": [
     {
       "name": "Discord",
-      "url": "https://linkedin.com"
+      "url": "https://discord.gg/lightlinkchain"
     },
     {
       "name": "Twitter",
-      "url": "https://linkedin.com"
+      "url": "https://twitter.com/lightlinkchain"
     },
     {
       "name": "Telegram",
-      "url": "https://linkedin.com"
+      "url": "https://t.me/lightlinkll"
     },
     {
       "name": "Website",
-      "url": "https://linkedin.com"
+      "url": "https://lightlink.io"
     }
   ],
   "topbarCtaButton": {
-    "name": "BlockExplorer",
-    "url": "https://github.com.com/lightlink-network"
+    "name": "Github",
+    "url": "https://github.com/lightlink-network"
   },
   "primaryTab": {
     "name": "Home"
@@ -56,23 +56,38 @@
     {
       "name": "Technical Deep Dive",
       "url": "technical-deep-dive"
+    },
+    {
+      "name": "Live Networks",
+      "url": "live-networks",
+      "isDefaultHidden": true
+    },
+    {
+      "name": "Live Contracts",
+      "url": "live-contracts",
+      "isDefaultHidden": true
+    },
+    {
+      "name": "JSON-RPC API",
+      "url": "json-rpc",
+      "isDefaultHidden": true
     }
   ],
   "anchors": [
     {
       "name": "Live Networks",
       "icon": "circle-nodes",
-      "url": "https://lightlink.mintlify.app/live-networks/pegasus"
+      "url": "live-networks"
     },
     {
       "name": "Live Contracts",
       "icon": "file-contract",
-      "url": "https://lightlink.mintlify.app/live-contracts/pegasus"
+      "url": "live-contracts"
     },
     {
       "name": "JSON-RPC API",
       "icon": "plug",
-      "url": "https://lightlink.mintlify.app/json-rpc/introduction"
+      "url": "json-rpc"
     }
   ],
   "navigation": [
@@ -125,13 +140,36 @@
         "technical-deep-dive/data-availability",
         "technical-deep-dive/sequencer-node"
       ]
+    },
+    {
+      "group": "Live Networks",
+      "pages": [
+        "live-networks/phoenix",
+        "live-networks/pegasus"
+      ]
+    },
+    {
+      "group": "Live Contracts",
+      "pages": [
+        "live-contracts/phoenix",
+        "live-contracts/pegasus"
+      ]
+    },
+    {
+      "group": "JSON-RPC API",
+      "pages": [
+        "json-rpc/introduction",
+        "json-rpc/endpoints/create",
+        "json-rpc/endpoints/delete",
+        "json-rpc/endpoints/get"
+      ]
     }
   ],
   "footerSocials": {
-    "discord": "https://twitter.com/mintsearch",
-    "x": "https://x.com/mintlify",
-    "telegram": "https://twitter.com/mintsearch",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "discord": "https://discord.gg/lightlinkchain",
+    "x": "https://twitter.com/lightlinkchain",
+    "telegram": "https://t.me/lightlinkll",
+    "github": "https://github.com/lightlink-network",
+    "linkedin": "https://www.linkedin.com/company/lightlinkchain"
   }
 }
