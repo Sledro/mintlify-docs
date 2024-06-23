@@ -1,0 +1,77 @@
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: rgba(
+    10,
+    10,
+    10,
+    0.7
+  ); /* Darker background with more transparency */
+  color: #ffffff; /* White text color */
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensure rounded corners are visible */
+  font-size: 14px; /* Smaller font size for better readability */
+}
+
+th,
+td {
+  padding: 12px 15px; /* Increased padding for better spacing */
+  text-align: left;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5); /* Darker border color with more transparency */
+}
+
+th {
+  background-color: rgba(
+    20,
+    19,
+    19,
+    0.7
+  ); /* Darker background for header with more transparency */
+  color: #0088cc; /* Blue text color for header */
+  text-transform: uppercase; /* Uppercase text for header */
+  font-size: 14px; /* Smaller font size for header */
+}
+
+tr:nth-child(even) {
+  background-color: rgba(
+    20,
+    20,
+    20,
+    0.7
+  ); /* Alternating row color with more transparency for better readability */
+}
+
+tr:hover {
+  background-color: rgba(
+    30,
+    30,
+    30,
+    0.7
+  ); /* Highlight row on hover with more transparency */
+}
+
+td:first-child {
+  border-top-left-radius: 8px; /* Rounded corner for the first cell */
+  border-bottom-left-radius: 8px; /* Rounded corner for the last cell */
+}
+
+td:last-child {
+  border-top-right-radius: 8px; /* Rounded corner for the first cell */
+  border-bottom-right-radius: 8px; /* Rounded corner for the last cell */
+}
+
+td a {
+  color: #0088cc; /* Blue link color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+td a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Optional: Add some styling to the first column */
+td:first-child {
+  font-weight: bold; /* Bold text for the first column */
+}
