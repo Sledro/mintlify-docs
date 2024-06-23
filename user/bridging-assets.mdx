@@ -3,47 +3,55 @@ title: "Bridging Assets"
 icon: "bridge"
 ---
 
-The official LightLink bridge is now available at https://bridge.lightlink.io.
+# The LightLink bridge dApp
 
-The LightLink bridge dApp
 When the user deposits ETH or other assets to the LightLink Bridge on Ethereum, Validator nodes confirm the deposit and notify the Keeper node. The Keeper node mints the same amount of ETH or other assets to the user’s address on LightLink.
 
 To bridge assets from LightLink to Ethereum, the user first deposits them into the LightLink bridge on LightLink. Validator nodes confirm the deposit, and then the Keeper node burns or wraps those assets. Subsequently, the same amount of tokens is released from the bridge contract on Ethereum to the user’s address on Ethereum.
 
-Read more in the Bridge Architecture section.
+Read more in the [Technical Deep Dive](../technical-deep-dive) section.
 
-How to Transfer Assets to LightLink
-The bridge currently supports the transfer of native Ethereum and multiple officially supported tokens such as DAI, USDT, MATIC and WBTC.
+<Card
+  title="Visist the Official Bridge"
+  icon="link"
+  href="https://bridge.lightlink.io"
+>
+  This is how you use a card with an icon and a link. Clicking on this card
+  brings you to the Card Group page.
+</Card>
 
-Navigate to our bridge dApp.
+# How to Transfer Assets to LightLink
 
-Click the 'Connect Wallet' button
+The bridge currently supports the transfer of native Ethereum and multiple officially supported tokens such as [DAI](https://makerdao.com/en/), [USDT](https://tether.to/en/), [MATIC](https://coinmarketcap.com/currencies/polygon/) and [WBTC](https://coinmarketcap.com/currencies/wrapped-bitcoin/).
 
-Select the network from which you would like to transfer your assets from
-
-Select the asset you want to bridge, such as ETH, USDT, WBTC, or others
-
-Enter the amount of the asset you would like to transfer, e.g. 0.1 Ethereum
-
-Click 'Transfer'
-
-Confirm the transaction and send it via your wallet
+<Steps>
+  <Step title="Navigate to our bridge dApp" />
+  <Step title="Click the 'Connect Wallet' button" />
+  <Step title="Select the network from which you would like to transfer your assets from" />
+  <Step title="Select the asset you want to bridge, such as ETH, USDT, WBTC, or others" />
+  <Step title="Enter the amount of the asset you would like to transfer, e.g. 0.1 Ethereum" />
+  <Step title="Click 'Transfer'" />
+  <Step title="Confirm the transaction and send it via your wallet" />
+</Steps>
 
 You will now see the transaction appear in the recent transaction section at the bottom of the dApp. After your transaction has been approved by our bridge validators and 12 blocks have passed, your funds will be available to use.
 
 Please note that the bridging process from Ethereum to LightLink takes about 6 minutes for the transaction to finalize and become irreversible. This duration serves as a safety measure to prevent fraudulent activities on the bridge contract.
 
-How to Withdraw Assets From LightLink
-Go to our bridge dApp.
+# How to Withdraw Assets From LightLink
 
-Connect your wallet.
+<Steps>
+  <Step title="Navigate to our bridge dApp" />
+  <Step title="Click the 'Connect Wallet' button" />
+  <Step title="Select the asset you want to withdraw, such as ETH, USDT, WBTC, or others" />
+  <Step title="Enter the amount of the asset you would like to withdraw" />
+  <Step title="Click 'Transfer'" />
+  <Step title="Confirm the transaction and send it via your wallet" />
+</Steps>
 
-Select the asset you want to withdraw, like ETH, USDT, WBTC, or others.
+<Info>
+  Please note that withdrawals from LightLink to Ethereum take about **48
+  hours** to complete due to security protocols.
+</Info>
 
-Enter the amount you wish to withdraw.
-
-Click 'Transfer'.
-
-Confirm the action in your wallet.
-
-Please note that withdrawals from LightLink to Ethereum take two days due to security protocols. In optimistic rollups, all transactions published on L1 are considered valid unless validators produce a fraud-proof within a two-day period. This extended withdrawal timeframe is implemented to allow validators sufficient time to verify all transactions, ensuring they are valid and safe to proceed.
+In optimistic rollups, all transactions published on L1 are considered valid unless validators produce a fraud-proof within a two-day period. This extended withdrawal timeframe is implemented to allow validators sufficient time to verify all transactions, ensuring they are valid and safe to proceed.

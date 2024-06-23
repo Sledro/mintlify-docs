@@ -92,7 +92,7 @@
     {
       "name": "Brand Assets",
       "icon": "download",
-      "url": "#"
+      "url": "https://lightlink.io/marketing-assets"
     }
   ],
   "navigation": [
@@ -177,5 +177,9 @@
     "telegram": "https://t.me/lightlinkll",
     "github": "https://github.com/lightlink-network",
     "linkedin": "https://www.linkedin.com/company/lightlinkchain"
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true
   }
 }
