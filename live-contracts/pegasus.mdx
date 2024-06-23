@@ -3,34 +3,36 @@ title: Sepolia <-> Pegasus  Contracts
 mode: "wide"
 ---
 
+LightLink Pegasus is connected to Ethereum Sepolia via a set of smart contracts that are deployed on both chains. These contracts are responsible for handling deposits, withdrawals, and cross-chain messaging, bridging and securing the rollup chain.
+
 ### Ethereum Contracts
 
 <Card>
-| Contract               | App | Address                                                                                                               |
-| ---------------------- | -- | --------------------------------------------------------------------------------------------------------------------- |
-| L1BridgeRegistry       | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1NativeTokenPredicate | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1ERC20Predicate       | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| CanonicalStateChain    | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| Challenge              | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| ChainOracle            | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| RLPReader              | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| BlobstreamX            | Test | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| Contract               | App           | Address                                                                                                               |
+| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| L1BridgeRegistry       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| L1NativeTokenPredicate | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| L1ERC20Predicate       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| CanonicalStateChain    | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| Challenge              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| ChainOracle            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| RLPReader              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| BlobstreamX            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
 
 </Card>
 
 ### Phoenix Contracts
 
 <Card>
-| Contract               | Address                                                                                                               |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| L1BridgeRegistry       | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1NativeTokenPredicate | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1ERC20Predicate       | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| CanonicalStateChain    | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| Challenge              | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| ChainOracle            | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| RLPReader              | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| BlobstreamX            | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| Contract               | App           | Address                                                                                                               |
+| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| L1BridgeRegistry       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| L1NativeTokenPredicate | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| L1ERC20Predicate       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| CanonicalStateChain    | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| Challenge              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| ChainOracle            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| RLPReader              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
+| BlobstreamX            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
 
 </Card>

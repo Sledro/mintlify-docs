@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "LightLink Docs",
   "logo": {
-    "dark": "/logo/dark.avif",
-    "light": "/logo/light.svg"
+    "dark": "/logo/docs-logo-dark.svg",
+    "light": "/logo/docs-logo-light.svg"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -88,6 +88,11 @@
       "name": "JSON-RPC API",
       "icon": "plug",
       "url": "json-rpc"
+    },
+    {
+      "name": "Brand Assets",
+      "icon": "download",
+      "url": "#"
     }
   ],
   "navigation": [
@@ -103,12 +108,9 @@
     {
       "group": "User Docs",
       "pages": [
-        "user/code",
-        "user/images",
-        "user/markdown",
-        "user/navigation",
-        "user/reusable-snippets",
-        "user/settings"
+        "user/connect-wallet",
+        "user/add-ll",
+        "user/bridging-assets"
       ]
     },
     {
@@ -138,7 +140,11 @@
       "pages": [
         "technical-deep-dive/protocol-overview",
         "technical-deep-dive/data-availability",
-        "technical-deep-dive/sequencer-node"
+        "technical-deep-dive/sequencer-node",
+        "technical-deep-dive/rollup-protocol",
+        "technical-deep-dive/cross-chain-messaging",
+        "technical-deep-dive/withdrawals",
+        "technical-deep-dive/deposits"
       ]
     },
     {
