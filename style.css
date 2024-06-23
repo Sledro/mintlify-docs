@@ -10,28 +10,36 @@ table {
     0.7
   ); /* Darker background with more transparency */
   color: #ffffff; /* White text color */
-  border-radius: 8px; /* Rounded corners for the table */
+  border-radius: 8px 8px 0 0; /* Rounded corners for the top of the table */
   overflow: hidden; /* Ensure rounded corners are visible */
-  font-size: 14px; /* Smaller font size for better readability */
+  font-size: 15px; /* Smaller font size */
 }
 
 th,
 td {
-  padding: 12px 15px; /* Increased padding for better spacing */
+  padding: 10px 12px; /* Slightly reduced padding for better spacing with smaller font */
   text-align: left;
   border-bottom: 1px solid rgba(51, 51, 51, 0.5); /* Darker border color with more transparency */
 }
 
 th {
   background-color: rgba(
-    20,
-    19,
-    19,
+    5,
+    5,
+    5,
     0.7
   ); /* Darker background for header with more transparency */
   color: #0088cc; /* Blue text color for header */
   text-transform: uppercase; /* Uppercase text for header */
-  font-size: 14px; /* Smaller font size for header */
+  font-size: 11px; /* Smaller font size for header */
+}
+
+th:first-child {
+  border-top-left-radius: 8px; /* Rounded corner for the first header cell */
+}
+
+th:last-child {
+  border-top-right-radius: 8px; /* Rounded corner for the last header cell */
 }
 
 tr:nth-child(even) {
@@ -52,22 +60,12 @@ tr:hover {
   ); /* Highlight row on hover with more transparency */
 }
 
-td:first-child {
-  border-top-left-radius: 8px; /* Rounded corner for the first cell */
-  border-bottom-left-radius: 8px; /* Rounded corner for the last cell */
-}
-
-td:last-child {
-  border-top-right-radius: 8px; /* Rounded corner for the first cell */
-  border-bottom-right-radius: 8px; /* Rounded corner for the last cell */
-}
-
-td a {
-  color: #0088cc; /* Blue link color */
+a {
+  color: inherit; /* Inherit color from parent element */
   text-decoration: none; /* Remove underline from links */
 }
 
-td a:hover {
+a:hover {
   text-decoration: underline; /* Underline on hover for links */
 }
 
