@@ -111,7 +111,9 @@
       "pages": [
         "user/connect-wallet",
         "user/add-ll",
-        "user/bridging-assets"
+        "user/bridging-assets",
+        "user/getting-testnet-tokens",
+        "user/use-cases"
       ]
     },
     {
@@ -128,12 +130,7 @@
     {
       "group": "Enterprise Docs",
       "pages": [
-        "enterprise/code",
-        "enterprise/images",
-        "enterprise/markdown",
-        "enterprise/navigation",
-        "enterprise/reusable-snippets",
-        "enterprise/settings"
+        "enterprise/coming-soon"
       ]
     },
     {
