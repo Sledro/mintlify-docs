@@ -100,10 +100,10 @@
     {
       "group": "Introduction",
       "pages": [
+        "getting-started",
         "introduction",
         "mission",
-        "tech-stack",
-        "getting-started"
+        "tech-stack"
       ]
     },
     {
