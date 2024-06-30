@@ -19,32 +19,562 @@ LightLink Pegasus is connected to Ethereum Sepolia via a set of smart contracts 
 
 ### Live Ethereum Smart Contracts
 
-<Card>
-| Contract               | App           | Address                                                                                                               |
-| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
-| L1BridgeRegistry       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1NativeTokenPredicate | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1ERC20Predicate       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| CanonicalStateChain    | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| Challenge              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| ChainOracle            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| RLPReader              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| BlobstreamX            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-
-</Card>
+<table
+  style={{
+    background: "#242222",
+    color: "#ffffff",
+    font: "15px",
+    borderRadius: "8px",
+  }}
+>
+  <tr
+    style={{
+      background: "#141414",
+      color: "#0088cc",
+      font: "11px;",
+      width: "100%",
+    }}
+  >
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Contract Name</p>
+    </th>
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Application</p>
+    </th>
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Contract Address</p>
+    </th>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1BridgeRegistry</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1NativeTokenPredicate</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1ERC20Predicate</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>CanonicalStateChain</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>Challenge</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>ChainOracle</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>RLPReader</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>BlobstreamX</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+</table>
 
 ### Live Phoenix Smart Contracts
 
-<Card>
-| Contract               | App           | Address                                                                                                               |
-| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
-| L1BridgeRegistry       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1NativeTokenPredicate | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| L1ERC20Predicate       | Native Bridge | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| CanonicalStateChain    | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| Challenge              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| ChainOracle            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| RLPReader              | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-| BlobstreamX            | Hummingbird   | [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72) |
-
-</Card>
+<table
+  style={{
+    background: "#242222",
+    color: "#ffffff",
+    font: "15px",
+    borderRadius: "8px",
+  }}
+>
+  <tr
+    style={{
+      background: "#141414",
+      color: "#0088cc",
+      font: "11px;",
+      width: "100%",
+    }}
+  >
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Contract Name</p>
+    </th>
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Application</p>
+    </th>
+    <th
+      style={{
+        width: "20%",
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>Contract Address</p>
+    </th>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1BridgeRegistry</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1NativeTokenPredicate</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>L1ERC20Predicate</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Bridge`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>CanonicalStateChain</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>Challenge</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>ChainOracle</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1a1919", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>RLPReader</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+  <tr style={{ background: "#1c1c1c", width: "100%" }}>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+        fontWeight: "bolder",
+      }}
+    >
+      <p style={{ margin: "0px" }}>BlobstreamX</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "0px" }}>`Hummingbird`</p>
+    </td>
+    <td
+      style={{
+        padding: "0px 12px",
+        border: "1px solid #1c1c1c",
+      }}
+    >
+      <p style={{ margin: "10px" }}>
+        [0x624631881655a310adcF0d1336658Cc977609b72](https://etherscan.io/address/0x624631881655a310adcF0d1336658Cc977609b72)
+      </p>
+    </td>
+  </tr>
+</table>
