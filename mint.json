@@ -3,10 +3,10 @@
   "name": "LightLink Docs",
   "theme": "prism",
   "logo": {
-    "dark": "/logo/docs-logo-dark.svg",
-    "light": "/logo/docs-logo-light.svg"
+    "dark": "/images/docs-logo-dark.svg",
+    "light": "/images/docs-logo-light.svg"
   },
-  "favicon": "/favicon.png",
+  "favicon": "/images/favicon.png",
   "colors": {
     "primary": "#5FA9FF",
     "light": "#5FA9FF",
@@ -35,7 +35,7 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Github",
+    "name": "GitHub",
     "url": "https://github.com/lightlink-network"
   },
   "primaryTab": {
@@ -101,8 +101,8 @@
       "group": "Introduction",
       "pages": [
         "getting-started",
-        "introduction",
-        "mission",
+        "what-is-lightlink",
+        "mission-statement",
         "tech-stack"
       ]
     },
