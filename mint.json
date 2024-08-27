@@ -119,9 +119,9 @@
     {
       "group": "Developer Docs",
       "pages": [
-        "developer/code",
-        "developer/images",
-        "developer/markdown",
+        "developer/building-on-lightlink",
+        "developer/lightlink-vs-ethereum",
+        "developer/smart-contracts",
         "developer/navigation",
         "developer/reusable-snippets",
         "developer/settings"
@@ -130,7 +130,7 @@
     {
       "group": "Enterprise Docs",
       "pages": [
-        "enterprise/coming-soon"
+        "enterprise/what-is-enterprise-mode"
       ]
     },
     {
