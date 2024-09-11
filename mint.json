@@ -55,23 +55,8 @@
       "url": "enterprise"
     },
     {
-      "name": "Technical Deep Dive",
-      "url": "technical-deep-dive"
-    },
-    {
-      "name": "Live Networks",
-      "url": "live-networks",
-      "isDefaultHidden": true
-    },
-    {
-      "name": "Live Contracts",
-      "url": "live-contracts",
-      "isDefaultHidden": true
-    },
-    {
-      "name": "JSON-RPC API",
-      "url": "json-rpc",
-      "isDefaultHidden": true
+      "name": "Technical Docs",
+      "url": "technical"
     }
   ],
   "anchors": [
@@ -121,10 +106,7 @@
       "pages": [
         "developer/building-on-lightlink",
         "developer/lightlink-vs-ethereum",
-        "developer/smart-contracts",
-        "developer/navigation",
-        "developer/reusable-snippets",
-        "developer/settings"
+        "developer/how-to-deploy-a-contract"
       ]
     },
     {
@@ -134,15 +116,15 @@
       ]
     },
     {
-      "group": "Technical Deep Dive",
+      "group": "Technical Docs",
       "pages": [
-        "technical-deep-dive/protocol-overview",
-        "technical-deep-dive/data-availability",
-        "technical-deep-dive/sequencer-node",
-        "technical-deep-dive/rollup-protocol",
-        "technical-deep-dive/cross-chain-messaging",
-        "technical-deep-dive/withdrawals",
-        "technical-deep-dive/deposits"
+        "technical/protocol-overview",
+        "technical/data-availability",
+        "technical/sequencer-node",
+        "technical/rollup-protocol",
+        "technical/cross-chain-messaging",
+        "technical/withdrawals",
+        "technical/deposits"
       ]
     },
     {
