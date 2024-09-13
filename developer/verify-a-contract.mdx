@@ -3,9 +3,11 @@ title: 'Verify a Contract'
 icon: 'file-check'
 ---
 
-The contracts can be manually verified using the official Explorer ([Mainnet](https://phoenix.lightlink.io), [Testnet](https://pegasus.lightlink.io)).
+The contracts can be manually verified using the official Explorer
+([Mainnet](https://phoenix.lightlink.io), [Testnet](https://pegasus.lightlink.io)).
 
-Verification ensures that the deployed bytecode matches the human-readable Solidity code, confirming that the developers are not attempting to deceive users.
+Verification ensures that the deployed bytecode matches the human-readable Solidity code, confirming
+that the developers are not attempting to deceive users.
 
 Additionally, developers can verify the code using Foundry or Hardhat.
 
@@ -21,8 +23,9 @@ forge verify-contract <contract-address> src/HelloWorld.sol:L1BlHelloWorld /
 
 ## Option 2: Hardhat
 
-To verify a contract using Hardhat, developers can use the [hardhat-verify](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) plugin with the follwing configuration
-added to the `hardhat.config.js` file:
+To verify a contract using Hardhat, developers can use the
+[hardhat-verify](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) plugin
+with the follwing configuration added to the `hardhat.config.js` file:
 
 ```bash
 customChains: [

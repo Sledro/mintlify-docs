@@ -5,17 +5,23 @@ icon: 'bridge'
 
 # Standard Bridge
 
-LightLinks provides a fully permissionless standard bridge to move assets between Ethereum and LightLink. The bridge supports the transfer of ETH and and ERC20 tokens.
+LightLinks provides a fully permissionless standard bridge to move assets between Ethereum and
+LightLink. The bridge supports the transfer of ETH and and ERC20 tokens.
 
-The standard bridge is has a graphical user interface build and maintained by the LightLink team that can be accessed at [bridge.lightlinks.io](https://bridge.lightlinks.io).
+The standard bridge is has a graphical user interface build and maintained by the LightLink team
+that can be accessed at [bridge.lightlinks.io](https://bridge.lightlinks.io).
 
-This document is a guide for developers who want to integrate the LightLink bridge into their own applications.
+This document is a guide for developers who want to integrate the LightLink bridge into their own
+applications.
 
-For more information on the LightLink bridge, please refer to the [technical documentation](https://docs.lightlinks.io/technical/bridge).
+For more information on the LightLink bridge, please refer to the
+[technical documentation](https://docs.lightlinks.io/technical/bridge).
 
 ### LightLink SDK
 
-The LightLink SDK is a Typescript library that provides a set of functions to interact with the standard bridge. The `ll-sdk` is available as an NPM package and can be installed using the following command:
+The LightLink SDK is a Typescript library that provides a set of functions to interact with the
+standard bridge. The `ll-sdk` is available as an NPM package and can be installed using the
+following command:
 
 ```bash
 npm install @lightlinks/sdk
@@ -93,7 +99,8 @@ await tx.wait();
 
 ### Deposit ERC20
 
-To deposit ERC20 tokens we simply need to approve the L1 standard bridge to spend the tokens and then call the `depositERC20` function.
+To deposit ERC20 tokens we simply need to approve the L1 standard bridge to spend the tokens and
+then call the `depositERC20` function.
 
 ```typescript
 // Approve the L1 standard bridge to spend 0.001 ERC20

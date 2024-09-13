@@ -5,9 +5,14 @@ icon: 'bridge'
 
 # The LightLink bridge dApp
 
-When the user deposits ETH or other assets to the LightLink Bridge on Ethereum, Validator nodes confirm the deposit and notify the Keeper node. The Keeper node mints the same amount of ETH or other assets to the user’s address on LightLink.
+When the user deposits ETH or other assets to the LightLink Bridge on Ethereum, Validator nodes
+confirm the deposit and notify the Keeper node. The Keeper node mints the same amount of ETH or
+other assets to the user’s address on LightLink.
 
-To bridge assets from LightLink to Ethereum, the user first deposits them into the LightLink bridge on LightLink. Validator nodes confirm the deposit, and then the Keeper node burns or wraps those assets. Subsequently, the same amount of tokens is released from the bridge contract on Ethereum to the user’s address on Ethereum.
+To bridge assets from LightLink to Ethereum, the user first deposits them into the LightLink bridge
+on LightLink. Validator nodes confirm the deposit, and then the Keeper node burns or wraps those
+assets. Subsequently, the same amount of tokens is released from the bridge contract on Ethereum to
+the user’s address on Ethereum.
 
 Read more in the [technical documentation](../technical) section.
 
@@ -22,7 +27,10 @@ Read more in the [technical documentation](../technical) section.
 
 # How to Transfer Assets to LightLink
 
-The bridge currently supports the transfer of native Ethereum and multiple officially supported tokens such as [DAI](https://makerdao.com/en/), [USDT](https://tether.to/en/), [MATIC](https://coinmarketcap.com/currencies/polygon/) and [WBTC](https://coinmarketcap.com/currencies/wrapped-bitcoin/).
+The bridge currently supports the transfer of native Ethereum and multiple officially supported
+tokens such as [DAI](https://makerdao.com/en/), [USDT](https://tether.to/en/),
+[MATIC](https://coinmarketcap.com/currencies/polygon/) and
+[WBTC](https://coinmarketcap.com/currencies/wrapped-bitcoin/).
 
 <Steps>
   <Step title="Navigate to our bridge dApp" />
@@ -34,9 +42,13 @@ The bridge currently supports the transfer of native Ethereum and multiple offic
   <Step title="Confirm the transaction and send it via your wallet" />
 </Steps>
 
-You will now see the transaction appear in the recent transaction section at the bottom of the dApp. After your transaction has been approved by our bridge validators and 12 blocks have passed, your funds will be available to use.
+You will now see the transaction appear in the recent transaction section at the bottom of the dApp.
+After your transaction has been approved by our bridge validators and 12 blocks have passed, your
+funds will be available to use.
 
-Please note that the bridging process from Ethereum to LightLink takes about 6 minutes for the transaction to finalize and become irreversible. This duration serves as a safety measure to prevent fraudulent activities on the bridge contract.
+Please note that the bridging process from Ethereum to LightLink takes about 6 minutes for the
+transaction to finalize and become irreversible. This duration serves as a safety measure to prevent
+fraudulent activities on the bridge contract.
 
 # How to Withdraw Assets From LightLink
 
@@ -54,4 +66,7 @@ Please note that the bridging process from Ethereum to LightLink takes about 6 m
   security protocols.
 </Info>
 
-In optimistic rollups, all transactions published on L1 are considered valid unless validators produce a fraud-proof within a two-day period. This extended withdrawal timeframe is implemented to allow validators sufficient time to verify all transactions, ensuring they are valid and safe to proceed.
+In optimistic rollups, all transactions published on L1 are considered valid unless validators
+produce a fraud-proof within a two-day period. This extended withdrawal timeframe is implemented to
+allow validators sufficient time to verify all transactions, ensuring they are valid and safe to
+proceed.

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "format": "prettier \"**/*.{css,js,ts,tsx,md,mdx}\" --write",
+    "format": "prettier \"**/*.{css,js,ts,tsx,md,mdx}\" --write --prose-wrap always",
     "format:check": "prettier \"**/*.{css,js,ts,tsx,md,mdx}\" --check"
   },
   "devDependencies": {
