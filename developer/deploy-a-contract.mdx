@@ -1,0 +1,107 @@
+---
+title: "Deploy a Contract"
+icon: "laptop-code"
+---
+
+Deploying a contact on LightLink is an identical process as deploying a contract on Ethereum. Contracts can be deployed on the Pegasus testnet or on the Phoenix mainnet.
+See the [live networks](/live-networks) page for more information on the differences between the two networks and their respective use cases.
+
+For the pruposes of this guide, we will deploy a simple contract to the Pegasus testnet that returns "Hello World!".
+
+We will deploy the same contract using two different deployment tools: Foundry and Hardhat.
+
+<Note>
+  We reccomend testing the deployment process on the Pegasus testnet before
+  deploying on the Phoenix mainnet. Visit the [Pegasus
+  faucet](https://pegasus.lightlink.io/faucet) for free testnet tokens.
+</Note>
+
+## Option 1: Foundry
+
+See the [Foundry documentation](https://book.getfoundry.sh/getting-started/installation) for more information on how to install and use Foundry.
+
+Create a new foundry project:
+
+```bash
+forge init hello_world_foundry
+cd hello_world_foundry
+```
+
+Create a new file called `src/HelloWorld.sol` and paste the following code:
+
+```solidity
+// SPDX-License-Identifier: MIT
+// compiler version must be greater than or equal to 0.8.26 and less than 0.9.0
+pragma solidity ^0.8.26;
+
+contract HelloWorld {
+    string public greet = "Hello World!";
+}
+```
+
+Deploy the contract to the Pegasus testnet:
+
+```bash
+$ forge create --rpc-url https://replicator.pegasus.lightlink.io/rpc/v1 --private-key <your_private_key> src/HelloWorld.sol:HelloWorld
+compiling...
+success.
+Deployer: 0xa735b3c25f...
+Deployed to: 0x4054415432...
+Transaction hash: 0x6b4e0ff93a...
+```
+
+## Option 2: Hardhat
+
+See the [Hardhat documentation](https://hardhat.org/getting-started/) for more information on how to install and use Hardhat.
+
+Create a new Hardhat project:
+
+```bash
+mkdir hello_world_hardhat
+cd hello_world_hardhat
+npx hardhat init
+```
+
+Create a new file called `contracts/HelloWorld.sol` and paste the following code:
+
+```solidity
+// SPDX-License-Identifier: MIT
+// compiler version must be greater than or equal to 0.8.26 and less than 0.9.0
+pragma solidity ^0.8.26;
+
+contract HelloWorld {
+    string public greet = "Hello World!";
+}
+```
+
+Add the pegasus network to the `hardhat.config.js` file:
+
+```javascript
+module.exports = {
+  networks: {
+    pegasus: {
+      url: "https://replicator.pegasus.lightlink.io/rpc/v1",
+      accounts: [privateKey],
+    },
+  },
+};
+```
+
+Create your deploy script:
+
+```javascript
+const { ethers } = require("hardhat");
+
+async function main() {
+  const HelloWorld = await ethers.getContractFactory("HelloWorld");
+  const helloWorld = await HelloWorld.deploy();
+
+  console.log("HelloWorld deployed to:", helloWorld.address);
+}
+```
+
+Deploy the contract to the Pegasus testnet:
+
+```bash
+npx hardhat run scripts/deploy.js --network pegasus
+```

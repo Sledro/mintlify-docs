@@ -1,9 +1,93 @@
 ---
 title: "Building on LightLink"
+icon: "code"
 ---
 
-From a developers perspective, building on LightLink is similar to building on Ethereum. LightLink is fully compatible with Ethereum's EVM, so you can use the same tools, libraries, and languages you're already familiar with.
+Building on LightLink is similar to building on Ethereum. LightLink uses Ethereum's EVM from the go-ethereum code base and is therefore full EVM equivilent. Being fully EVM equivilent provides maximum interopability between LightLink and existing
+Ethereum developer tooling. This design choise enabled Ethereum developers to utalise the same tools, libraries, and languages you're already familiar with.
 
-## Getting Started
+Hardhat, Foundry, Truffle, and Remix are all compatible with LightLink. You can use these tools to build, test, and deploy your smart contracts on LightLink.
 
-To get started, you'll need to install the LightLink SDK. You can find the installation instructions in the [LightLink SDK documentation](https://docs.lightlink.io/sdk).
+## LightLink vs Ethereum
+
+Although LightLink is fully EVM compatible, there are some differences between LightLink and Ethereum that developers should be aware of.
+
+### 1. Opcodes
+
+| Opcode     | Solidity           | Description                                                                                                                                                                                                                        |
+| ---------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| COINBASE   | `block.coinbase`   | Returns the address of the current Sequencer's fee wallet. Effectively the same as Ethereum with the caveat the value typically does not change from block to block.                                                               |
+| PREVRANDAO | `block.prevrandao` | Set pseudorandomly for each block by the Sequencer as opposed to the stronger guarantees provided by RANDAO on Ethereum.                                                                                                           |
+| ORIGIN     | `tx.origin`        | If the transaction is an L1 ⇒ L2 transaction triggered by a smart contract on L1, then tx.origin is set to the aliased address of the address that triggered the L1 ⇒ L2 transaction. Otherwise, this opcode behaves normally.     |
+| CALLER     | `msg.sender`       | If the transaction is an L1 ⇒ L2 transaction triggered by a smart contract on L1, and this is the first call frame (rather than an internal transaction from one contract to another), the same address aliasing behavior applies. |
+
+### 2. Transactions
+
+LightLink only supports type 0 Ethereum transactions. EIP-1559 is not supported on LightLink.
+
+## LightLink SDK
+
+The LightLink SDK is a useful Typescript SDK that can be installed via npm. The SDK can be used to interact with the LightLink chain and is a useful tool for developers building on LightLink.
+
+```bash
+npm install @lightlink/sdk
+```
+
+```typescript
+import {
+  CrossChainMessenger,
+  L1ChainID,
+  L2ChainID,
+  MessageStatus,
+} from "@lightlink-network/ll-sdk";
+import { ethers } from "ethers";
+
+const l1Provider = new ethers.providers.StaticJsonRpcProvider(
+  process.env.L1_RPC_URL!
+);
+const l2Provider = new ethers.providers.StaticJsonRpcProvider(
+  process.env.L2_RPC_URL!
+);
+const l1Wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, l1Provider);
+const l2Wallet = new ethers.Wallet(process.env.PRIVATE_KEY!, l2Provider);
+
+const messenger = new CrossChainMessenger({
+  l1SignerOrProvider: l1Wallet,
+  l2SignerOrProvider: l2Wallet,
+  l1ChainId: L1ChainID.SEPOLIA,
+  l2ChainId: L2ChainID.LIGHTLINK_PEGASUS,
+  lightlink: true,
+});
+
+async function main() {
+  // DepositETH is a simple one step process.
+  let tx = await messenger.depositETH(ethers.utils.parseEther("0.001"));
+  await tx.wait();
+
+  // WithdrawETH is a three step process over a period of at least 7 days.
+
+  // Step 1: Withdraw ETH from L2 to L1
+  let tx = await messenger.withdrawETH(ethers.utils.parseEther("0.001"));
+  await tx.wait();
+
+  // Step 2: Prove the withdrawal on L1
+  tx = await messenger.proveMessage(tx.hash);
+  await tx.wait();
+
+  // Step 3: Finalize the withdrawal on L1
+  tx = await messenger.finalizeMessage(tx.hash);
+  await tx.wait();
+
+  // A message status can be checked. This can be useful for checking if
+  // the next step in the withdrawal process is ready. i.e. READY_TO_PROVE
+  let status = await messenger.getMessageStatus(tx.hash);
+  if (status === MessageStatus.READY_TO_PROVE) {
+    console.log("Withdrawal is ready to be proven!");
+  }
+
+  // Optionally, you can wait for a message to reach a certain status.
+  // This can be useful for waiting for a deposit to be relayed by the
+  // sequencer (12 confirmations).
+  await messenger.waitForMessageStatus(tx.hash, MessageStatus.RELAYED);
+}
+```

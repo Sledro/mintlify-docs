@@ -1,4 +1,41 @@
 ---
-title: 'Create Plant'
-openapi: 'POST /plants'
+title: "eth_getBalance"
+api: "POST /"
 ---
+
+### Body
+
+<ParamField
+  body="jsonrpc"
+  type="string"
+  initialValue="2.0"
+  placeholder="2.0"
+  required
+>
+  2.0
+</ParamField>
+
+<ParamField
+  body="method"
+  type="string"
+  initialValue="eth_getBalance"
+  placeholder="eth_getBalance"
+  default="eth_getBalance"
+  required
+>
+  eth_getBalance
+</ParamField>
+
+<ParamField body="params" type="array">
+  <ParamField
+    body="method"
+    type="string"
+    initialValue="eth_getBalance"
+    placeholder="eth_getBalance"
+    default="eth_getBalance"
+    required
+  >
+    0x99d3f3a83a68b3c3bb923d86387dc91340c53304
+
+</ParamField>
+</ParamField>

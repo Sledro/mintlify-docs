@@ -59,21 +59,27 @@
       "url": "technical"
     }
   ],
+  "versions": [
+    "v1.0"
+  ],
   "anchors": [
     {
       "name": "Live Networks",
       "icon": "circle-nodes",
-      "url": "live-networks"
+      "url": "live-networks",
+      "version": "v1.0"
     },
     {
       "name": "Live Contracts",
       "icon": "file-contract",
-      "url": "live-contracts"
+      "url": "live-contracts",
+      "version": "v1.0"
     },
     {
       "name": "JSON-RPC API",
       "icon": "plug",
-      "url": "json-rpc"
+      "url": "json-rpc",
+      "version": "v1.0"
     },
     {
       "name": "Brand Assets",
@@ -105,8 +111,10 @@
       "group": "Developer Docs",
       "pages": [
         "developer/building-on-lightlink",
-        "developer/lightlink-vs-ethereum",
-        "developer/how-to-deploy-a-contract"
+        "developer/deploy-a-contract",
+        "developer/verify-a-contract",
+        "developer/bridge-assets",
+        "developer/applying-for-a-grant"
       ]
     },
     {
@@ -144,7 +152,7 @@
     {
       "group": "JSON-RPC API",
       "pages": [
-        "json-rpc/introduction"
+        "json-rpc/endpoint/create"
       ]
     }
   ],

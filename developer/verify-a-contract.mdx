@@ -1,0 +1,53 @@
+---
+title: "Verify a Contract"
+icon: "file-check"
+---
+
+The contracts can be manually verified using the official Explorer ([Mainnet](https://phoenix.lightlink.io), [Testnet](https://pegasus.lightlink.io)).
+
+Verification ensures that the deployed bytecode matches the human-readable Solidity code, confirming that the developers are not attempting to deceive users.
+
+Additionally, developers can verify the code using Foundry or Hardhat.
+
+## Option 1: Foundry
+
+To verify a contract using Foundry,
+
+```bash
+forge verify-contract <contract-address> src/HelloWorld.sol:L1BlHelloWorld /
+--chain-id 1890 --compiler-version v0.8.22+commit.4fc1097e /
+--verifier-url https://phoenix.lightlink.io/api --verifier blockscout
+```
+
+## Option 2: Hardhat
+
+To verify a contract using Hardhat, developers can use the [hardhat-verify](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify) plugin with the follwing configuration
+added to the `hardhat.config.js` file:
+
+```bash
+customChains: [
+  {
+    network: 'phoenix',
+    chainId: 1890,
+    urls: {
+      apiURL: 'https://phoenix.lightlink.io/api',
+      browserURL: 'https://phoenix.lightlink.io',
+    },
+  },
+  {
+    network: 'pegasus',
+    chainId: 1891,
+    urls: {
+      apiURL: 'https://pegasus.lightlink.io/api',
+      browserURL: 'https://pegasus.lightlink.io',
+    },
+  },
+],
+```
+
+After adding the configuration, developers can run the following command to verify the contract:
+
+```bash
+npx hardhat verify --network pegasus DEPLOYED_CONTRACT_ADDRESS /
+"Constructor argument 1"
+```

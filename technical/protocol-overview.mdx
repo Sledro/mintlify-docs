@@ -1,11 +1,41 @@
 ---
-title: "Protocol Overview"
+title: "1. Protocol Overview"
 ---
 
-Our novel layer two design comprises several interconnected components, each playing a crucial role within the ecosystem. LightLink harnesses the Ethereum platform as its settlement layer, housing the Canonical State Chain. Operating at the execution layer is our custom client, heavily inspired by the renowned open-source Ethereum client Geth. LightLink builds upon the remarkable advancements achieved by the Celestia team to provide secure, modular data availability.
+<Note>
+  This documentation is intended for technical users and developers who are
+  interested in understanding the LightLink protocol and how it works.
+</Note>
 
-![title](/images/protocol-overview-diagram.png)
+<Warning>
+  Although LightLink has a live mainnet, the protocol is still in active
+  development and in Beta. As such, the information provided in this
+  documentation is subject to change.
+</Warning>
 
-The architecture diagram above, illustrates the comprehensive data flow within the protocol. For most users, interaction primarily revolves around light clients or replicator nodes. These key components facilitate seamless submission of new transactions and enable direct querying of the layer two blockchain through their JSON-RPC APIs. Transactions submitted to a replicator node or light client undergo eventual ordering by the sequencer, culminating in their inclusion within a block.
+LightLink is an <Tooltip tip="Optimiums scale blockchains by moving execution and data availability off the base layer">Optimium</Tooltip> Rollup protocol that scales
+[Ethereum](https://ethereum.org/) by moving execution to a new layer (layer 2), aggregating transactions into batches and posting these batches on both layer one Ethereum
+and data availability layer [Celestia](https://celestia.org/). This modular design allows LightLink to leverage the security of Ethereum while achieving high throughput and low
+transaction fees.
 
-The pivotal role of consolidating multiple layer two blocks into a singular bundle rests with the Hummingbird Node running in publisher mode. Subsequently, this bundle serves as the foundation for crafting a new roll-up block headers on layer one. The publisher's duties extend to posting bundle data to Celestia, while concurrently issuing new block headers to the Canonical State Chain contract with each bundle iteration. Lastly, the Hummingbird Smart Contracts serve as the linchpin, orchestrating seamless integration within the system.
+Our novel layer two design comprises of several interconnected components, each playing a crucial role within the ecosystem. LightLink harnesses the Ethereum platform as its settlement
+layer, housing the CanonicalStateChain. Operating at the execution layer is our custom client, heavily inspired by the renowned open-source Ethereum client
+[Geth](https://github.com/ethereum/go-ethereum). LightLink builds upon the remarkable advancements achieved by the Celestia team to provide secure, modular data availability.
+
+<Frame caption="Fig.1 LightLink Protocol Modular Layered Arcitecture">
+  <img width={500} src="/images/layers.svg" />
+</Frame>
+
+When transactions are submitted to the LightLink network, they are processed by the sequencer node, which orders and validates them before adding them to a new layer two block.
+A publisher periodically consolidates multiple layer two blocks into a single bundle, which is then used to create a new roll-up block header on layer one. The entire L2 block
+and transaction data is compressed and posted to Celestia, which provides consensus around whether the data is available to be downloaded by any network participant for verification.
+
+Each header contains a reference to every transaction in the bundle, allowing users to verify the state of the layer two chain by checking the CanonicalStateChain contract.
+
+<Frame caption="Fig.2 LightLink Protocol Overview">
+  <img src="/images/overview.svg" />
+</Frame>
+
+The pivotal role of consolidating multiple layer two blocks into a singular bundle rests with the Hummingbird Node running in publisher mode. Subsequently, this bundle serves as
+the foundation for crafting a new roll-up block headers on layer one. The publisher's duties extend to posting bundle data to Celestia, while concurrently issuing new block headers
+to the Canonical State Chain contract with each bundle iteration. Lastly, the Hummingbird Smart Contracts serve as the linchpin, orchestrating seamless integration within the system.

@@ -1,5 +1,236 @@
 ---
-title: "Rollup Protocol"
+title: "4. Rollup Protocol"
 ---
 
-...
+5. Hummingbird
+   Hummingbird is the name for the set of components responsible for building and securing the layer two roll-up Canonical State Chain on layer one. The components comprise the Hummingbird Client, which can run multiple roles such as a rollups publisher, challenge defender or as a validator/challenger. Hummingbird is also comprised of a number of smart contracts on both layer one and layer two. These contracts are responsible for important tasks such as passing messages between layers one and two, updating the Canonical State Chain on layer one and proving the integrity of the Canonical State Chain.
+
+As mentioned, most users only need to interact with the layer two network over JSON-RPC via a replicator node or light client. They will never have to worry if the sequencer is behaving honestly. The protocol only requires at least one honest validator to confirm the sequencer and publisher are behaving honestly. A single validator has the capability to prove:
+
+State execution was performed correctly.
+
+The data in each roll-up block was made available and is consistent with layer two.
+
+Each roll-up block header is valid according to the protocol parameters.
+
+That no valid transactions have been censored.
+
+If the sequencer or publisher behaves dishonestly and does not follow the protocol rules, the layer two Canonical State Chain will be rolled back to preserve integrity.
+
+The sequencer is responsible for building and processing new layer two blocks. The Hummingbird publisher is responsible for bundling those blocks and making the block's data available on Celestia. The publisher is the only person allowed to append new block headers to the Canonical State Chain on layer one.
+
+Hummingbird's novel design allows LightLink to scale Ethereum efficiently and transparently while maintaining security. This is achieved by providing provable data availability and correctness via Celestia's Blobstream data availability oracle on layer one and provable state execution via our on-chain MIPS EVM.
+
+Hummingbird will transform LightLink chains into Optimistic Rollups. Merging the features of LightLink, with security of Ethereum. To achieve this we had to create a novel rollups system instead of just forking Optimism engine – like so many others do.
+
+The upcoming system will maintain LightLinks high speed, ultra low transaction fees and best-in-class enterprise features. While also ensuring: the correctness of Layer 2 is provable on Layer 1, that Layer 2 transactions can't be censored, and that the network data is provably available.
+
+Figure 2. Hummingbird architecture overview
+Hummingbird is currently undergoing development and testing, as a result details of the system might change.
+
+Hummingbird comprises a collection of smart contracts, as well as a client application.
+
+The Client is responsible for publishing rollup blocks, performing validation and interacting with challenges. To fulfill its purpose it must interact with three blockchains: A LightLink Chain (Layer 2), Celestia (data availability layer), and Ethereum (Layer 1).
+
+The Contracts define the rollup chain, storing rollup blocks, and containing methods for validating the integrity of Layer 2.
+
+5.1 Rolling up
+The Hummingbird client first downloads a bundle of Layer 2 blocks from the LightLink sequencer. This bundle is then uploaded to Celestia (Data availability layer). Finally a rollup header is created – including a pointer to the data on Celestia, and is submitted to the CanonicalStateChain contract on Ethereum (Layer 1).
+
+Figure 3. Hummingbird rollup bundles overview
+Each rollup block body, is a bundle, which contains up to 5000 LightLink blocks. This unique approach allows us have ultra low Layer 2 fees, but requires special care when it comes to data availability and on-chain validation.
+
+5.2 Data availability Layer
+Layer 2 blocks are uploaded to Celestia as shares, validators attests to the availability of a binary Merkle root which contains these shares. Theses attestations can be verified on Ethereum using the Blobstream contracts. If a Celestia validator withholds data or produces incorrect blocks it can be detected by anyone running a light node and be slashed.
+
+Hummingbird provides a ChainOracle contract for Layer 1 which allows the cost effective loading of Layer 2 headers and transactions from Celestia shares. All items loaded through the ChainOracle are proven to correspond to the Celestia pointer inside a submitted Rollup block. The proofs also include the Binary Merkle proof showing the shares are part of an attested celestia data root committed to the blobstream.
+
+\*potential fallback challenges considered – in the unlikely event of extreme collusion of Celestia validators.
+
+5.3 Validating
+Anybody can act as a validator of the network by interacting with the challenge contracts on Ethereum.
+
+The Challenge contracts can be broken into three groups: Data availability challenges, Censorship challenges and Execution challenges. Each challenge is typically a two party game where the challenger pays a fee to initiate, a defender must provide on-chain verifiable proof of correctness, and the winner receives the fee.
+
+The data availability challenges rely heavily upon the ChainOracle to prove that data is available and has been since the rollup block was submitted.
+
+The Censorship challenge relies upon the ChainOracle, Cannon and TxQueue contracts to check a queued transaction was included and valid.
+
+The Execution challenges implement Cannon to compute correct state roots and compare the results.
+
+5.4 Censorship resistance
+The network prevents the sequencer from censoring transactions by allowing the user to submit Layer 2 transactions directly to a TxQueue Contract on Layer 1. These queued transactions must be included within the first block, of the rollup bundle that's epoch corresponds to the Layer 1 block that the transactions was submitted in.
+
+Figure 4. L1 TxQueue overview
+If the transaction was not included the user can challenge the rollup bundle which should have included it:
+
+Figure 5. Valid inclusion flow
+If the transaction is valid, and not included in the correct rollup block then the block can be rolled back following an censorship challenge. This forces the sequencer to include it, otherwise it will be replaced by a sequencer who will.
+
+Figure 6. Invalid inclusion flow
+5.5 Execution
+Hummingbird implements George Hotz's Cannon as a fault-proof system. The core of Cannon is a MIPS emulator written in solidity, which allows us to run a EVM (or any state transition engine) on-chain. You can think of it as LightLinks EVM running on the Ethereum EVM.
+
+With this system we can derive the correct Layer 2 state roots directly on Layer 1. (The Execution challenge contract only needs to run a single step of this execution on-chain, as an intermediate state root can be derived and checked to be part of the tree producing the final state root).
+
+5.6 Rollbacks and the Publisher
+A single publisher is allow to submit new blocks to Layer 1.
+
+Each rollup block submitted has a window of time (1 days) in which it can be rollback following a successful challenge. If the current publisher has 3 rollbacks it can be replaced by the DAO. This prevents a malicious publisher from halting the network indefinitely.
+
+The LightLink sequencer and replicator nodes dynamically respond to rollbacks, and will continue working from the new chain head.
+
+6.1 Hummingbird Smart Contracts
+The hummingbird smart contracts repository can be found here.
+
+Figure 7. Smart Contract Diagram
+6.1.1 CanonicalStateChain.sol
+The Canonical State Chain (CSC) can be considered the source of truth for the layer two chain. All layer two blocks will eventually be bundled up by the hummingbird publisher and published to the CSC. Blocks in the CSC are pending for seven days. This gives validators enough time to challenge an incorrect block and roll back the chain if necessary. Only one publisher is allowed to push new blocks to the CSC contract. If a bad block is submitted, leading to a rollback, the LightLink DAO can initiate the election of a new publisher.
+
+A roll-up block header has the following anatomy:
+
+```solidity
+struct Header {
+uint64 epoch; // Epoch refers to a block number on the Ethereum blockchain.
+uint64 l2Height; // L2Height is the index of the Last L2 Block in this bundle.
+bytes32 prevHash; // PrevHash is the hash of the previous block bundle.
+bytes32 txRoot; // The root of a merkle tree containing all the transactions in the Bundle.
+bytes32 blockRoot; // The root of a merkle tree containing all the blocks in the Bundle.
+bytes32 stateRoot; // The Stateroot after applying all the blocks in the Bundle.
+
+// Pointer to the blocks contents on celestia.
+// See https://docs.celestia.org/developers/blobstream-offchain#defining-a-chain
+uint64 celestiaHeight;
+uint64 celestiaShareStart;
+uint64 celestiaShareLen;
+}
+```
+
+Every header contains enough information about a bundle of layer two blocks to be independently verified on layer one. The celestiaHeight, celestiaShareStart and celestiaShareLen values provide details of where the block data is stored in Celestia so that it can be retrieved or proven to be available.
+
+The stateRoot provides the expected state hash of the chain after applying all of the blocks contained within the data bundle. The blockRoot and txRoot allow us to easily verify if a given block or transaction is contained within the bundle.
+
+The canonical state chain contract has the ability to roll back the Canonical State Chain to a specific block. The challenge contract, which is defined within the canonical state chain contract, is the only contract allowed to initiate a chain rollback in the event of a successful challenge.
+
+6.1.2 Challenge.sol
+Challenge allows anyone to challenge the validity of a block. As mentioned, if a block is proven to be invalid, the chain is rolled back to the previous block. Most challenges require a challenge fee, which is paid to the winner of the challenge. The fee mechanism serves three purposes, its used to incentivise good challenges, disincentivise frivolous challenges and reimburse the defender for the cost of providing proof (gas). Challenges must be initiated within a valid challenge window. This is a time window that starts when the block is published, and ends after a certain time has passed. If a challenge is made outside of this window, it will be rejected. The window may be different for certain challenges.
+
+The challenge contract is used as a base for all challenges in the protocol. As seen below, a multitude of different types of challenges are imported into the challenge contract.
+
+6.1.3 ChallengeHeader.sol
+
+Contract that lets anyone challenge a block header against some basic validity checks. The following checks are made:
+
+The epoch is greater than the previous epoch.
+
+The l2Height is greater than the previous l2Height.
+
+The prevHash is the previous block hash.
+
+The bundle size is less than the maximum bundle size.
+
+If any of these checks fail, the chain is rolled back to the previous block.
+
+Just like with all challenges, the challenge window must be open; however, there is no challenge fee.
+
+6.1.4 ChallengeDataAvailability.sol
+This is a challenge game; anybody can challenge the DA of a block.
+
+Once initiated, the defender (block publisher) must provide proof within a short time window. (This proof is verified via the Blobstream contract). If they fail to do so, the challenger wins the challenge, and the chain is rolled back to the previous block.
+
+The window on this challenge starts 80 mins after the block is published, and ends 6 hours after the block is published. The delay in the challenge window's start gives Celestia enough time to validate the data and publish the proof. The shortened end window gives time for subsequent challenges after data availability is proven.
+
+Anyone can challenge data availability by calling challengeDataRootInclusion() .
+
+If a challenge is detected, a Hummingbird Defender will query the Celestia pointer info from the block header.
+
+Query Celestia node to generate a data inclusion proof
+
+Submit that proof to defendDataRootInclusion() via Challenge.sol
+
+Challenge.sol will use the Celestia Blobstream DAOracle to verify the proof, and the challenge will be marked as completed "defender won"
+
+if the DA challenge is not defended in a set time period; anyone can call settleDataRootInclusion(), the challenger will win & CSC will be rolled back
+
+6.1.5 ChainOracle.sol
+This contract enables any user to directly upload valid layer 2 blocks, from the data availability layer, on to layer 1.
+
+Data is loaded in two parts:
+
+Celestia shares are loaded, along with the required merkle proofs and validator attestations.
+
+Stored shares can then be decoded into Layer 2 headers and transactions.
+
+Once loaded, the headers and transactions can be fetched from the ChainOracle by their respective hashes. This mechanism is crucial for the other challenges listed below.
+
+6.1.6 ChallengeL2Block.sol
+This is a challenge game, that anybody can call challengeL2Block() to validate the correctness of a layer 2 Block:
+
+To initiate a challenge a user must provide the number of the layer 2 block which they are challenging.
+
+The Defender will then have to load that layer 2 block using the ChainOracle.
+
+The Defender will then call defendL2Block() . The challenge contract will fetch the headers and transactions from the ChainOracle and check the following fields are correct: transactionsRoot, parentHash, number, timestamp
+
+Note: The stateRoot is not checked here. The stateRoot is validated by the challenge below.
+
+6.1.7 ChallengeExecution.sol
+Incomplete. This is an implementation of Cannon – the fault proof engine. The primary function of this contract is to verify that stateRoot of a layer 2 block is correct by executing a block on layer 1, calculating the correct stateRoot and comparing the results.
+
+A challenge can be initiated by anyone by doing the following:
+
+Load the challenged block and its parents header into the Canonical state chain.
+
+Load initial state that will be accessed during execution into MipsMemory.sol .
+
+Call challengeExecution() to initiate the challenge.
+
+LightLinks state transition engine (EVM) is compiled to the MIPs instruction set.
+
+The challenger and defender do a binary search until they find the exact MIPS operation where their reported state executions differ.
+
+The operation is run in MIPS.sol – a onchain MIPS emulator. The emulated EVM, calculates the correct output of the operation.
+
+If the output matches the challengers expectation the challenger wins. Otherwise, the defender wins.
+
+6.2 Hummingbird Client
+The hummingbird client is a tool for creating and validating rollups. It interacts with all three layers: Layer 1, Layer 2 and the data availability layer to rollup, inspect, challenge and defend. The repository can be found here.
+
+It can be run in three different modes:
+
+Rollup: Publishing new bundles to Celestia and the Canonical State Chain.
+
+Challenge: Prepare and initiate new challenges.
+
+Defender: Listen for new challenges and attempt to defend them.
+
+6.2.1 Creating Rollup Blocks
+Rollups can be create using the following commands:
+
+Copy
+hb rollup next # Generates the only the next rollup block.
+hb rollup start # Generates rollup blocks automatically.
+The client begins by retrieving the latest state of the rollup from the CanonicalStateChain smart contract deployed on Layer 1, to ensure synchronization.
+
+Following this, it will fetch a set of blocks from the Layer 2 network. These blocks are bundled up, encoded (RLP) and uploaded the data availability layer: Celestia.
+
+Finally the rollup block is assembled to encapsulate key information which includes: epoch the current Layer 1 height, l2Height the height of the Layer 2 blocks in this bundle and fields which point to the block bundle on Celestia. The rollup block is then published to the `CanonicalStateChain` contract on Layer 1.
+
+6.2.2 Managing Challenges
+Challenges are used to validate the integrity of the rollups. Some challenges, like challenging execution, requires complex preparation and mutliple calls and watching for responses. While others are simple and require only a single step of initialization.
+
+Challenges can be triggered manually from the CLI
+
+```bash
+hb challenger challenge-da <block_number> # See ChallengeDataAvailability.sol
+```
+
+6.2.3 Defending the chain
+Some challenges may be baseless and require a defender to submit proofs of correctness. Defending may require fetching the source data of the challenged block from Celestia, providing data to the chain oracle and the generation of proofs.
+
+Defences can be triggered manually or automatically via the CLI:
+
+```bash
+hb defender defend-da <block_hash> # See ChallengeDataAvailability.sol
+hb defender start # Manually listen for challenges and prepare defences.
+```
