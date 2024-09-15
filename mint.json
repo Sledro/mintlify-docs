@@ -66,20 +66,17 @@
     {
       "name": "Live Networks",
       "icon": "circle-nodes",
-      "url": "live-networks",
-      "version": "v1.0"
+      "url": "live-networks"
     },
     {
       "name": "Live Contracts",
       "icon": "file-contract",
-      "url": "live-contracts",
-      "version": "v1.0"
+      "url": "live-contracts"
     },
     {
       "name": "JSON-RPC API",
       "icon": "plug",
-      "url": "json-rpc",
-      "version": "v1.0"
+      "url": "json-rpc"
     },
     {
       "name": "Brand Assets",

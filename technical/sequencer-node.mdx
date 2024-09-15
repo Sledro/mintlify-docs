@@ -1,10 +1,12 @@
 ---
-title: '3. Sequencer Node'
+title: '3. Sequencer'
 ---
 
-Initially, the sequencer node is hosted and maintained by the LightLink team. In the future, it is
-possible for the sequencer node to be randomly distributed amongst peers with some form of staking
-and slashing mechanism to enforce honesty.
+<Note>
+  Initially, the sequencer is hosted and maintained by the LightLink team. In the future, it is
+  possible for the sequencer node to be randomly distributed amongst peers with some form of staking
+  and slashing mechanism to enforce honesty.
+</Note>
 
 The sequencer node assumes the pivotal role of constructing layer two blocks within the system.
 Tasked with receiving and validating transactions from replicator nodes, it proceeds to order and
@@ -16,7 +18,7 @@ Transactions are prioritised for inclusion in the next L2Block based on their ga
 offering the highest gas price given precedence. Furthermore, the sequencing of transactions within
 the block is determined by their nonce and gas price.
 
-Presently, the sequencer produces a new L2Block every 500 milliseconds, with these blocks
+Presently, the sequencer produces a new L2Block every 500 milliseconds, with each block
 cryptographically appended to the layer two chain. This 500ms production rate is deemed reasonable;
 however, it remains adjustable to suit evolving requirements. The sequencer diligently populates
 each new L2Block until it reaches the predetermined gas limit, presently set at 15,000,000 gwei.

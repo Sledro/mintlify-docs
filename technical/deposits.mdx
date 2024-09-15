@@ -2,5 +2,50 @@
 title: '7. Deposits'
 ---
 
-A Deposit Transaction is a special type of transaction that is initiated on L1 and executed on L2.
-Deposits are build on top of LightLink's cross-chain messsaging system which is a fork of Optimisms
+A deposit transaction is a special type of transaction that is initiated on L1 and executed on L2.
+Deposits are fully permissionless and must be included by the sequencer. LightLink's deposit system
+leverages the great open source work done by the team at Optimism.
+
+## L1 Processing
+
+1. An L1 entity, either a smart contract or an externally owned account (EOA), sends a deposit
+   transaction to L1CrossDomainMessenger, using sendMessage. This function accepts three parameters:
+
+   - `target`, target address on L2.
+   - `message`, the L2 transaction's calldata, formatted as per the ABI of the target account.
+   - `minGasLimit`, the minimum gas limit allowed for the transaction on L2. Note that this is a
+     minimum and the actual amount provided on L2 may be higher (but never lower) than the specified
+     gas limit. The actual amount provided on L2 is often higher because the portal contract on L2
+     performs some processing before submitting the call to `target`.
+
+2. The L1 cross domain messenger calls its own `send` function. It uses these parameters:
+
+   - `to`, the destination address, is the messenger on the other side. In the case of deposits,
+     this is always `0x4200000000000000000000000000000000000007`.
+   - `gasLimit`, the gas limit. This value is calculated using the baseGas function.
+   - `value`, the ETH that is sent with the message. This amount is taken from the transaction
+     value.
+   - `data`, the calldata for the call on L2 that is needed to relay the message. This is an ABI
+     encoded call to relayMessage.
+   - `sendMessage` calls the portal's depositTransaction function.
+
+<Note>
+  the other contracts can also call depositTransaction directly. However, doing so bypasses certain
+  safeguards, so in most cases it's a bad idea.
+</Note>
+
+3. The depositTransaction function runs a few sanity checks, and then emits a `TransactionDeposited`
+   event.
+
+## L2 Processing
+
+1. The `op-node` component looks for `TransactionDeposited` events on L1. If it sees any such
+   events, it parses them.
+
+2. Next, `op-node` converts those `TransactionDeposited` events into deposit transactions.
+
+3. In most cases, user deposit transactions call the `relayMessage` function of
+   L2CrossDomainMessenger.
+
+4. `relayMessage` runs a few sanity checks and then, if everything is good, calls the real target
+   contract with the relayed calldata.
